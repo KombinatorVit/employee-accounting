@@ -1,9 +1,13 @@
 import './employees-list-item.css';
-import {dataType} from '../app/app';
 
+type EmployeesListItemPropsType = {
+    key:number
+    name: string
+    salary: number
+    increase:boolean
+}
 
-
-const EmployeesListItem = ({name, salary, increase}: dataType) => {
+const EmployeesListItem = ({name, salary, increase,}: EmployeesListItemPropsType) => {
 
     let className = "list-group-item d-flex justify-content-between"
 if(increase){

@@ -4,10 +4,10 @@ import './employees-list.css';
 import {dataType} from '../app/app';
 
 const EmployeesList = ({data}: any) => {
-
     const elements = data.map((item: dataType) => {
+        const{id, ...itemProps} = item;
         return (
-            <EmployeesListItem {...item}/>
+            <EmployeesListItem key={id} {...itemProps}/>
         );
     });
     return (

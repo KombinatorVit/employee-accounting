@@ -9,16 +9,17 @@ import SearchPanel from '../search-panel/search-panel';
 export type dataType = {
     name: string
     salary: number
-    increase:boolean
+    increase: boolean
+    id: number
 }
 
 
 function App() {
 
-    const data:Array<dataType>= [
-        {name: 'Katy', salary: 800,increase:false },
-        {name: 'Vitalic', salary: 3000,increase:true },
-        {name: 'Dimon', salary: 5000,increase:false },
+    const data: Array<dataType> = [
+        {name: 'Katy', salary: 800, increase: false, id: 1},
+        {name: 'Vitalic', salary: 3000, increase: true, id: 2},
+        {name: 'Dimon', salary: 5000, increase: false, id: 3},
 
     ];
 
