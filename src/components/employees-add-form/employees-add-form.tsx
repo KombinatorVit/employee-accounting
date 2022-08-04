@@ -6,7 +6,7 @@ constructor(props: any) {
     super(props);
     this.state = {
         name: '',
-        salary: 0
+        salary: ''
     }
 }
     onValueChange = (e:ChangeEvent<HTMLInputElement>)=> {
@@ -17,6 +17,8 @@ constructor(props: any) {
 
     onSubmit = (e:FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+
+        if(this.state.name.length < 3 || !this.state.salary)return
         this.props.onAdd(this.state.name, this.state.salary)
         this.setState({
             name: '',
