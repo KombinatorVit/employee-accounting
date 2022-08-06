@@ -22,7 +22,9 @@ const EmployeesListItem = (props:any)=>{
 
     return (
 <li className={classNames}>
-<span className='list-group-item-label' onClick={onToggleProp} data-toggle={'rise'}>{name}
+<span className='list-group-item-label' onClick={onToggleProp} data-toggle={'rise'}
+style={{fontSize: '40px', color: 'blueviolet'}}
+>{name}
 </span>
 <input type="text" className="list-group-item-input" defaultValue={`${salary}$`}/>
 <div className="d-flex justify-content-center align-items-center">

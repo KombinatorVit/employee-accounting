@@ -1,4 +1,5 @@
-import './employees-add-form.css';
+// import './employees-add-form.css';
+import './employees-add-form.scss'
 import {ChangeEvent, Component, FormEvent} from 'react';
 
 class EmployeesAddForm extends Component<any, any>{
