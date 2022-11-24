@@ -8,20 +8,22 @@ import EmployeesAddForm from '../employees-add-form/employees-add-form';
 
 import './app.css';
 import {v1} from 'uuid';
-
+type StateType = {
+    data: dataType[]
+    term: string
+    filter: string
+}
 type dataType = {
     name: string
     salary: number
     increase: boolean
     rise: boolean
     id: string
-    term: string
-    filter: string
 }
 
-class App extends Component <any, any> {
-    constructor(props: dataType) {
-        super(props);
+class App extends Component <{ },StateType > {
+    constructor(props: {}) {
+        super(props)
         this.state = {
             data: [
                 {name: 'John C.', salary: 800, increase: false, rise: true, id: v1()},
@@ -34,7 +36,6 @@ class App extends Component <any, any> {
     }
 
     deleteItem = (id: string) => {
-        // @ts-ignore
         this.setState(({data}) => {
             return {
                 data: data.filter((item: any) => item.id !== id)
@@ -42,9 +43,7 @@ class App extends Component <any, any> {
         });
     };
 
-    // Да, пока могут добавляться пустые пользователи. Мы это еще исправим
-    // @ts-ignore
-    addItem = (name, salary) => {
+    addItem = (name:string, salary:number) => {
         const newItem = {
             name,
             salary,
@@ -52,7 +51,6 @@ class App extends Component <any, any> {
             rise: false,
             id: v1()
         };
-        // @ts-ignore
         this.setState(({data}) => {
             const newArr = [...data, newItem];
             return {
@@ -61,9 +59,7 @@ class App extends Component <any, any> {
         });
     };
 
-    // @ts-ignore
-    onToggleProp = (id, prop) => {
-        // @ts-ignore
+    onToggleProp = (id:string, prop:number) => {
         this.setState(({data}) => ({
             data: data.map((item: any) => {
                 if (item.id === id) {
@@ -74,7 +70,7 @@ class App extends Component <any, any> {
         }));
     };
 
-    searchEmp = (items: Array<any>, term: string) => {
+    searchEmp = (items: Array<dataType>, term: string) => {
         if (term.length === 0) return items;
 
 
@@ -83,7 +79,7 @@ class App extends Component <any, any> {
         });
     };
 
-    onUpdateSearch = (term:any) => {
+    onUpdateSearch = (term:string) => {
         this.setState({term})
     }
 
@@ -108,11 +104,8 @@ switch (filter) {
     render() {
         const {data, term, filter} = this.state;
         const visibleData = this.filterPost(this.searchEmp(data, term),filter)
-        // @ts-ignore
         const employees = this.state.data.length;
-        // @ts-ignore
         const increased = this.state.data.filter(item => item.increase).length;
-        // @ts-ignore
         return (
             <div className="app">
                 <AppInfo employees={employees} increased={increased}/>
